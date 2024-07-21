@@ -1,24 +1,11 @@
 /* Requires the Docker Pipeline plugin */
 pipeline {
-  agent any
-  stages {
-    stage('Build') {
-      steps {
-        echo 'Building..'
-      }
+    agent { docker { image 'python:3.12.4-alpine3.20' } }
+    stages {
+        stage('build') {
+            steps {
+                sh 'python --version'
+            }
+        }
     }
-
-    stage('Test') {
-      steps {
-        echo 'Testing..'
-      }
-    }
-
-    stage('Deploy') {
-      steps {
-        echo 'Deploying....'
-      }
-    }
-
-  }
 }

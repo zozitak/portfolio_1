@@ -3,6 +3,7 @@ portfolio_2.code-workspace
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
+*__pycache__
 *.py[cod]
 *$py.class
 
@@ -129,6 +130,7 @@ celerybeat.pid
 .venv
 env/
 venv/
+backend/app/venv/
 ENV/
 env.bak/
 venv.bak/

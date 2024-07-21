@@ -4,14 +4,13 @@ This repository showcases my expertise in web development through a comprehensiv
 
 <h2>The Project</h2>
 
-Simulation Materials API and Minimal Frontend Application
+Simulation Materials API and Minimal Frontend Application</br>
 
-In the realm of computer simulations, the accuracy of material models is critical for realistic results. 
+In the realm of computer simulations, the accuracy of material models is critical for realistic results.</br>
+This demo application provides an interface where engineers can access high-quality material models for free.</br>
 
-This demo application provides an interface where engineers can access high-quality material models for free.
-
-
-The demonstration leverages mock data and frontend templates, which should be replaced with real data and custom designs in a production environment.
+The demonstration leverages mock data and frontend templates, which should be replaced with real data</br> 
+and custom designs in a production environment.
 
 <h2>Used technologies</h2>
 

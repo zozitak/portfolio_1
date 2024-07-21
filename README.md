@@ -17,40 +17,27 @@ and custom designs in a production environment.
 
 <h3>PART 1</h3>
 
-[FastAPI](https://fastapi.tiangolo.com) for the Python backend API.
-
-[SQLModel](https://sqlmodel.tiangolo.com) for the Python SQL database interactions (ORM).
-
-[Pydantic](https://docs.pydantic.dev), used by FastAPI, for the data validation and settings management.
-
-[PostgreSQL](https://www.postgresql.org) as the SQL database.
-
-[Pytest](https://docs.pytest.org/) for Python tests.
-
-[OpenAPI v3](https://spec.openapis.org/oas/v3.1.0) for documentation.
+[FastAPI](https://fastapi.tiangolo.com) for the Python backend API.</br>
+[SQLModel](https://sqlmodel.tiangolo.com) for the Python SQL database interactions (ORM).</br>
+[Pydantic](https://docs.pydantic.dev), used by FastAPI, for the data validation and settings management.</br>
+[PostgreSQL](https://www.postgresql.org) as the SQL database.</br>
+[Pytest](https://docs.pytest.org/) for Python tests.</br>
+[OpenAPI v3](https://spec.openapis.org/oas/v3.1.0) for documentation.</br>
 
 
 <h3>PART 2</h3>
 
-[Jenkins](https://www.jenkins.io/) for CI (continuous integration) and CD (continuous deployment).
-
-[Nginx](https://nginx.org/en/) for reverse proxy and https certification.
-
-[Docker Compose](https://www.docker.com) for development and production.
-
-[Kubernetes](https://microk8s.io/) for cloud deployment.
-
-[Nagios Core](https://www.nagios.org/) for monitoring.
+[Jenkins](https://www.jenkins.io/) for CI (continuous integration) and CD (continuous deployment).</br>
+[Nginx](https://nginx.org/en/) for reverse proxy and https certification.</br>
+[Docker Compose](https://www.docker.com) for development and production.</br>
+[Kubernetes](https://microk8s.io/) for cloud deployment.</br>
+[Nagios Core](https://www.nagios.org/) for monitoring.</br>
 
 
 <h3>PART 3</h3>
 
-[Ansible](https://www.ansible.com/) for maintainance.
-
-[OWASP](https://owasp.org/) measures for cybersecurity.
-
-[JWT](https://jwt.io/) for secure sessions. 
-
-[SHA-256](https://en.wikipedia.org/wiki/SHA-2) for secure password hashing.
-
-Email based password recovery.
+[Ansible](https://www.ansible.com/) for maintainance.</br>
+[OWASP](https://owasp.org/) measures for cybersecurity.</br>
+[JWT](https://jwt.io/) for secure sessions. </br>
+[SHA-256](https://en.wikipedia.org/wiki/SHA-2) for secure password hashing.</br>
+Email based password recovery.</br>

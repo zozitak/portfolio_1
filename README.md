@@ -41,3 +41,9 @@ and custom designs in a production environment.
 [JWT](https://jwt.io/) for secure sessions. </br>
 [SHA-256](https://en.wikipedia.org/wiki/SHA-2) for secure password hashing.</br>
 Email based password recovery.</br>
+
+<h2>Development</h2>
+
+Furter documentation</br>
+<h3>[Backend](https://github.com/zozitak/portfolio_1/blob/main/backend/README.md)</h3>
+<h3>[Frontend](https://github.com/zozitak/portfolio_1/blob/main/frontend/README.md)</h3>

@@ -45,5 +45,5 @@ Email based password recovery.</br>
 <h2>Development</h2>
 
 Furter documentation</br>
-[Frontend](https://github.com/zozitak/portfolio_1/blob/main/frontend/README.md)</br>
-[Backend](https://github.com/zozitak/portfolio_1/blob/main/backend/README.md)</br>
+[Frontend](https://github.com/zozitak/portfolio_1/tree/main/frontend)</br>
+[Backend](https://github.com/zozitak/portfolio_1/tree/main/backend)</br>

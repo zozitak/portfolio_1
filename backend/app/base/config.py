@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from pydantic_settings import BaseSettings
+from pydantic_settings import BaseSettings # type: ignore
 
 class Settings(BaseSettings):
     API_STR: str = "/api/v1"

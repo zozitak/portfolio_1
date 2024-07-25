@@ -44,11 +44,16 @@ Email based password recovery.</br>
 
 <h2>Development</h2>
 
-Furter documentation</br>
-[Frontend](https://github.com/zozitak/portfolio_1/tree/main/frontend)</br>
-[Backend](https://github.com/zozitak/portfolio_1/tree/main/backend)</br>
+<h3>Portfolio 1 - Frontend: Responsive UI build</h3>
+[Frontend Dev Docs](https://github.com/zozitak/portfolio_1/tree/main/frontend)</br>
+
+1) Collecting UX steps
+2) UI Planning
+3) Responsive Build
+4) API Integration (OpenAPI mockup)
 
 <h3>Portfolio 1 - Backend: Unit testing with Pytest</h3>
+[Backend Dev Docs](https://github.com/zozitak/portfolio_1/tree/main/backend)</br>
 
 1) API Endpoint build with standard http responses
 2) CRUD operations with Data Models

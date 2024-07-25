@@ -25,7 +25,7 @@ and custom designs in a production environment.
 [OpenAPI v3](https://spec.openapis.org/oas/v3.1.0) for documentation.</br>
 
 
-<h3>Portfolio 2 - Deployment</h3>
+<h3>Portfolio 2 - Integration</h3>
 
 [Jenkins](https://www.jenkins.io/) for CI (continuous integration) and CD (continuous deployment).</br>
 [Nginx](https://nginx.org/en/) for reverse proxy and https certification.</br>
@@ -34,7 +34,7 @@ and custom designs in a production environment.
 [Nagios Core](https://www.nagios.org/) for monitoring.</br>
 
 
-<h3>Portfolio 3 - Security</h3>
+<h3>Portfolio 3 - Security & Deployment</h3>
 
 [Ansible](https://www.ansible.com/) for maintainance.</br>
 [OWASP](https://owasp.org/) measures for cybersecurity.</br>

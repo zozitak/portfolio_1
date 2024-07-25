@@ -1,6 +1,7 @@
 from fastapi.testclient import TestClient
+from app.base.config import settings
 
-from ..main import app
+from app.main import app
 
 client = TestClient(app)
 
@@ -9,4 +10,4 @@ def test_read_main():
     assert response.status_code == 204
 
 def test_app_properties():
-    assert app.title == "SimMat"
+    assert app.title == settings.APP_NAME

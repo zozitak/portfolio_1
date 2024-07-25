@@ -47,3 +47,10 @@ Email based password recovery.</br>
 Furter documentation</br>
 [Frontend](https://github.com/zozitak/portfolio_1/tree/main/frontend)</br>
 [Backend](https://github.com/zozitak/portfolio_1/tree/main/backend)</br>
+
+<h3>Portfolio 1 - Backend: Unit testing with Pytest</h3>
+
+1) API Endpoint build with standard http responses
+2) CRUD operations with Data Models
+3) Implement tests for desired Functionalities
+4) Build Functionalities with passing tests

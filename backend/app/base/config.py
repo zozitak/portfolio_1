@@ -62,5 +62,13 @@ class Settings(BaseSettings):
             self.DB_NAME = os.getenv("DB_NAME","app")
             self.DB_URL = self.SQLALCHEMY_DATABASE_URI()
             return self.DB_URL
+    
+    EMAIL_TEST_USER: str = Field(default="test@example.com",validate_default=False)
+    FIRST_USER: str = Field(default="test",validate_default=False)
+    FIRST_USER_PASSWORD: str = Field(default="securepassword2",validate_default=False)
+    
+    EMAIL_TEST_SUPER_USER: str = Field(default="supertest@example.com",validate_default=False)
+    FIRST_SUPERUSER: str = Field(default="supertest",validate_default=False)
+    FIRST_SUPERUSER_PASSWORD: str = Field(default="supersecurepassword2",validate_default=False)
 
 settings = Settings()  # type: ignore

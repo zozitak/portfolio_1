@@ -94,7 +94,7 @@ class MaterialCreate(MaterialBase):
 class MaterialUpdate(MaterialBase):
     name: str | None = Field(min_length=1, max_length=255)
     description: str | None = Field(default=None, max_length=255)
-    json: Dict[Any, Any] | None = Field(index=False, sa_column=Column(JSON))
+    material_json: Dict[Any, Any] | None = Field(sa_column=Column(JSON))
 
 # Database model, database table inferred from class name
 class Material(MaterialBase, table=True):
@@ -103,7 +103,7 @@ class Material(MaterialBase, table=True):
     description: str | None = Field(default=None, max_length=255)
     simulation_software: Simulation_Software.name | None = Relationship(back_populates="materials")
     software_id: uuid.UUID | None = Field(default=None, foreign_key="simulation_software.id")
-    json: Dict[Any, Any] | None = Field(index=False, sa_column=Column(JSON))
+    material_json: Dict[Any, Any] | None = Field(sa_column=Column(JSON))
 
 # Properties to return via API, id is always required
 class MaterialPublic(MaterialBase):

@@ -4,7 +4,7 @@ from app import crud
 from app.base.config import settings
 from app.models import User, UserCreate
 
-engine = create_engine(str(settings.DB_URL))
+engine = create_engine(settings.get_url())
 
 
 # make sure all SQLModel models are imported (app.models) before initializing DB

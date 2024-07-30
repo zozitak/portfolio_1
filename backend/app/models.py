@@ -70,7 +70,7 @@ class Simulation_Software(Simulation_SoftwareBase, table=True):
     name: str = Field(min_length=1, max_length=255)
     url: str | None = Field(min_length=1, max_length=255)
     description: str | None = Field(default=None, max_length=255)
-    #materials: list["Material"] | None = Relationship(back_populates="simulation_software")
+    materials: list["Material"] | None = Relationship(back_populates="simulation_software")
 
 # Properties to return via API, id is always required
 class Simulation_SoftwarePublic(Simulation_SoftwareBase):
@@ -101,8 +101,8 @@ class Material(MaterialBase, table=True):
     id: uuid.UUID = Field(default_factory=uuid.uuid4, primary_key=True)
     name: str = Field(max_length = 255)
     description: str | None = Field(default=None, max_length=255)
-    #simulation_software: Simulation_Software.name | None = Relationship(back_populates="materials")
-    #software_id: uuid.UUID | None = Field(default=None, foreign_key="simulation_software.id")
+    simulation_software: Simulation_Software | None = Relationship(back_populates="materials")
+    software_id: uuid.UUID | None = Field(default=None, foreign_key="simulation_software.id")
     material_json: Dict[Any, Any] | None = Field(sa_column=Column(JSON))
 
 # Properties to return via API, id is always required

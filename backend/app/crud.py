@@ -60,9 +60,29 @@ def update_material(*,session:Session, db_material: Material, material_in: Mater
     session.refresh(db_material)
     return db_material
 
-def get_material_by_name(*,session:Session,db_material: Material, name: str) -> Material | None:
+def get_material_by_name(*,session:Session, db_material: Material, name: str) -> Material | None:
     statement = select(Material).where(Material.name == name)
     session_material = session.exec(statement).first()
     return session_material
 
+
+def create_simulation_software(*, session: Session, simulation_software_create: Simulation_SoftwareCreate) -> Simulation_Software:
+    db_obj = Simulation_Software.model_validate(simulation_software_create)
+    session.add(db_obj)
+    session.commit()
+    session.refresh(db_obj)
+    return db_obj
+
+def update_simulation_software(*,session:Session, db_simulation_software: Simulation_Software, simulation_software_in: Simulation_SoftwareUpdate) -> Any:
+    simulation_software_data = simulation_software_in.model_dump(exclude_unset=True)
+    db_simulation_software.sqlmodel_update(simulation_software_data)
+    session.add(db_simulation_software)
+    session.commit()
+    session.refresh(db_simulation_software)
+    return db_simulation_software
+
+def get_simulation_software_by_name(*,session:Session, db_simulation_software: Simulation_Software, name: str) -> Simulation_Software | None:
+    statement = select(Simulation_Software).where(Simulation_Software.name == name)
+    session_simulation_software = session.exec(statement).first()
+    return session_simulation_software
 

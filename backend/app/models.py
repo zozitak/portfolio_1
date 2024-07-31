@@ -56,19 +56,19 @@ class Simulation_SoftwareBase(SQLModel):
 
 # Properties to receive via API on creation
 class Simulation_SoftwareCreate(Simulation_SoftwareBase):
-    name: str = Field(min_length=1, max_length=255)
+    name: str = Field(default=None,min_length=1, max_length=255)
 
 # Properties to receive via API on update, all are optional
 class Simulation_SoftwareUpdate(Simulation_SoftwareBase):
-    name: str | None = Field(min_length=1, max_length=255)
+    name: str | None = Field(default=None,min_length=1, max_length=255)
     description: str | None = Field(default=None, max_length=255)
-    url: str | None = Field(min_length=1, max_length=255)
+    url: str | None = Field(default=None,min_length=1, max_length=255)
 
 # Database model, database table inferred from class name
 class Simulation_Software(Simulation_SoftwareBase, table=True):
     id: uuid.UUID = Field(default_factory=uuid.uuid4, primary_key=True)
     name: str = Field(min_length=1, max_length=255)
-    url: str | None = Field(min_length=1, max_length=255)
+    url: str | None = Field(default=None,min_length=1, max_length=255)
     description: str | None = Field(default=None, max_length=255)
 
 # Properties to return via API, id is always required

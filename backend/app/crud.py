@@ -1,10 +1,12 @@
 import uuid
-from typing import Any
+from typing import Any, List
 
 from sqlmodel import Session, select # type: ignore
 
 from app.base.security import get_password_hash, verify_password
 from app.models import User, UserCreate, UserUpdate
+from app.models import Material, MaterialCreate, MaterialUpdate
+from app.models import Simulation_Software, Simulation_SoftwareCreate, Simulation_SoftwareUpdate
 
 
 def create_user(*, session: Session, user_create: UserCreate) -> User:
@@ -15,7 +17,6 @@ def create_user(*, session: Session, user_create: UserCreate) -> User:
     session.commit()
     session.refresh(db_obj)
     return db_obj
-
 
 def update_user(*, session: Session, db_user: User, user_in: UserUpdate) -> Any:
     user_data = user_in.model_dump(exclude_unset=True)
@@ -30,12 +31,10 @@ def update_user(*, session: Session, db_user: User, user_in: UserUpdate) -> Any:
     session.refresh(db_user)
     return db_user
 
-
 def get_user_by_email(*, session: Session, email: str) -> User | None:
     statement = select(User).where(User.email == email)
     session_user = session.exec(statement).first()
     return session_user
-
 
 def authenticate(*, session: Session, email: str, password: str) -> User | None:
     db_user = get_user_by_email(session=session, email=email)
@@ -44,3 +43,26 @@ def authenticate(*, session: Session, email: str, password: str) -> User | None:
     if not verify_password(password, db_user.hashed_password):
         return None
     return db_user
+
+
+def create_material(*, session: Session, material_create: MaterialCreate) -> Material:
+    db_obj = Material.model_validate(material_create)
+    session.add(db_obj)
+    session.commit()
+    session.refresh(db_obj)
+    return db_obj
+
+def update_material(*,session:Session, db_material: Material, material_in: MaterialUpdate) -> Any:
+    material_data = material_in.model_dump(exclude_unset=True)
+    db_material.sqlmodel_update(material_data)
+    session.add(db_material)
+    session.commit()
+    session.refresh(db_material)
+    return db_material
+
+def get_material_by_name(*,session:Session,db_material: Material, name: str) -> Material | None:
+    statement = select(Material).where(Material.name == name)
+    session_material = session.exec(statement).first()
+    return session_material
+
+

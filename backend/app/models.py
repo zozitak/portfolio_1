@@ -1,6 +1,6 @@
 import uuid
 
-from typing import Dict, Any
+from typing import Dict, Any, List
 
 from pydantic import EmailStr
 from sqlmodel import Field, Relationship, SQLModel, Column, JSON # type: ignore
@@ -70,7 +70,6 @@ class Simulation_Software(Simulation_SoftwareBase, table=True):
     name: str = Field(min_length=1, max_length=255)
     url: str | None = Field(min_length=1, max_length=255)
     description: str | None = Field(default=None, max_length=255)
-    materials: list["Material"] | None = Relationship(back_populates="simulation_software")
 
 # Properties to return via API, id is always required
 class Simulation_SoftwarePublic(Simulation_SoftwareBase):
@@ -84,26 +83,24 @@ class Simulation_SoftwaresPublic(SQLModel):
 # Shared properties
 class MaterialBase(SQLModel):
     name: str = Field(min_length=1, max_length=255)
-    description: str | None = Field(default=None, max_length=255)
 
 # Properties to receive via API on creation
 class MaterialCreate(MaterialBase):
-    name: str = Field(min_length=1, max_length=255)
+    description: str | None = Field(default=None, max_length=255)
 
 # Properties to receive via API on update, all are optional
 class MaterialUpdate(MaterialBase):
-    name: str | None = Field(min_length=1, max_length=255)
+    name: str | None = Field(default=None, min_length=1, max_length=255)
     description: str | None = Field(default=None, max_length=255)
-    material_json: Dict[Any, Any] | None = Field(sa_column=Column(JSON))
+    material_json: Dict[Any, Any] | None = Field(default=None, sa_column=Column(JSON))
 
 # Database model, database table inferred from class name
 class Material(MaterialBase, table=True):
     id: uuid.UUID = Field(default_factory=uuid.uuid4, primary_key=True)
-    name: str = Field(max_length = 255)
     description: str | None = Field(default=None, max_length=255)
-    simulation_software: Simulation_Software | None = Relationship(back_populates="materials")
-    software_id: uuid.UUID | None = Field(default=None, foreign_key="simulation_software.id")
-    material_json: Dict[Any, Any] | None = Field(sa_column=Column(JSON))
+    simulation_software_name: str | None = Field(default=None, foreign_key="simulation_software.name", max_length=255)
+    simulation_software_id: uuid.UUID | None = Field(default=None, foreign_key="simulation_software.id")
+    material_json: Dict[Any, Any] | None = Field(default=None,sa_column=Column(JSON))
 
 # Properties to return via API, id is always required
 class MaterialPublic(MaterialBase):

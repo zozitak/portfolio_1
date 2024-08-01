@@ -98,8 +98,8 @@ class MaterialUpdate(MaterialBase):
 class Material(MaterialBase, table=True):
     id: uuid.UUID = Field(default_factory=uuid.uuid4, primary_key=True)
     description: str | None = Field(default=None, max_length=255)
-    simulation_software_name: str | None = Field(default=None, foreign_key="simulation_software.name", max_length=255)
-    simulation_software_id: uuid.UUID | None = Field(default=None, foreign_key="simulation_software.id")
+    simulation_software_name: str | None = Field(default=None, max_length=255)
+    simulation_software_id: uuid.UUID | None = Field(default=None)
     material_json: Dict[Any, Any] | None = Field(default=None,sa_column=Column(JSON))
 
 # Properties to return via API, id is always required

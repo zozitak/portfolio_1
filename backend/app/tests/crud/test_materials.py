@@ -23,15 +23,21 @@ def test_update_material(db: Session) -> None:
     if material.id is not None:
         crud.update_material(session=db, db_material=material, material_in=material_in_update)
     material_updated_desc = db.get(Material, material.id)
-    assert material_updated_desc.description == matraial_desc_update
-    assert material_updated_desc != material.description
+    if material_updated_desc is not None:
+        assert material_updated_desc.description == matraial_desc_update
+        assert material_updated_desc != material.description
+    else:
+        assert False
     
 def test_get_material(db: Session) -> None:
     material_name = random_lower_string()
     material_in = MaterialCreate(name=material_name,description="test")
     material = crud.create_material(session=db,material_create=material_in)
-    if material.id is not None:
+    if material is not None:
         material_got = crud.get_material_by_name(session=db, db_material=material, name=material_name)
-    assert material_got.name == material.name
-    assert jsonable_encoder(material_got)
+    if material_got is not None:
+        assert material_got.name == material.name
+        assert jsonable_encoder(material_got)
+    else:
+        assert False
 

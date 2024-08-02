@@ -24,16 +24,17 @@ def parse_cors(v: Any) -> list[str] | str:
         return v
     raise ValueError(v)
 
+DOTENV = os.path.join(os.path.dirname(__file__), ".env")
+
 class Settings(BaseSettings):
+
     model_config = SettingsConfigDict(
-        env_file=".env", env_ignore_empty=True, extra="ignore"
+        env_file=DOTENV, env_ignore_empty=True, extra="ignore"
     )
-    DB_TYPE: str = Field(default="postgresql",validate_default=False)
-    DB_URL: str = Field(default="",validate_default=False)
+    DB_URL: str | None = None
 
     API_STR: str = "/api/v1"
     APP_NAME: str = "SimMat"
-    OPERATION_MODE: str = "unittest"
 
     SECRET_KEY: str = secrets.token_urlsafe(32)
     # 60 minutes * 24 hours * 8 days = 8 days
@@ -54,31 +55,15 @@ class Settings(BaseSettings):
     ] = []
 
     PROJECT_NAME: str = Field(default="SimMat",validate_default=False)
-    DB_USER: str = Field(default="",validate_default=False)
-    DB_PORT: int = Field(default=5432,validate_default=False)
-    DB_SERVER: str = Field(default="",validate_default=False)
-    DB_PASSWORD: str = Field(default="",validate_default=False)
-    DB_NAME: str = Field(default="",validate_default=False)
+    DB_USER: str | None = None
+    DB_PORT: int = 5432
+    DB_SERVER: str | None = None
+    DB_PASSWORD: str | None = None
+    DB_NAME: str | None = None
 
     def get_url(self) -> str:
-        if self.DB_TYPE == "sqlite":
-            self.DB_USER = os.getenv("DB_USER","sqlite")
-            self.DB_PORT = int(os.getenv("DB_PORT",5432))
-            self.DB_SERVER = os.getenv("DB_SERVER","localhost")
-            self.DB_PASSWORD = os.getenv("DB_PASSWORD","")
-            self.DB_NAME = os.getenv("DB_NAME","app")
-            self.DB_URL = f"sqlite:///./test.db" #sqlite uses a file as db
-            return self.DB_URL
-        elif self.DB_TYPE == "postgresql":
-            self.DB_USER = os.getenv("DB_USER","postgres")
-            self.DB_PORT = int(os.getenv("DB_PORT",5432))
-            self.DB_SERVER = os.getenv("DB_SERVER","localhost")
-            self.DB_PASSWORD = os.getenv("DB_PASSWORD","password")
-            self.DB_NAME = os.getenv("DB_NAME","app")
-            self.DB_URL = str(self.SQLALCHEMY_DATABASE_URI)
-            return self.DB_URL
-        else:
-            raise NotSupportedError
+        self.DB_URL = str(self.SQLALCHEMY_DATABASE_URI)
+        return self.DB_URL
         
     @computed_field  # type: ignore[misc]
     @property
@@ -115,13 +100,13 @@ class Settings(BaseSettings):
     def emails_enabled(self) -> bool:
         return bool(self.SMTP_HOST and self.EMAILS_FROM_EMAIL)
 
-    EMAIL_TEST_USER: str = Field(default="test@example.com",validate_default=False)
-    FIRST_USER: str = Field(default="test",validate_default=False)
-    FIRST_USER_PASSWORD: str = Field(default="securepassword2",validate_default=False)
+    EMAIL_TEST_USER: str = ""
+    FIRST_USER: str = ""
+    FIRST_USER_PASSWORD: str = ""
     
-    EMAIL_TEST_SUPER_USER: str = Field(default="supertest@example.com",validate_default=False)
-    FIRST_SUPERUSER: str = Field(default="supertest",validate_default=False)
-    FIRST_SUPERUSER_PASSWORD: str = Field(default="supersecurepassword2",validate_default=False)
+    EMAIL_TEST_SUPER_USER: str = ""
+    FIRST_SUPERUSER: str = ""
+    FIRST_SUPERUSER_PASSWORD: str = ""
 
     def _check_default_secret(self, var_name: str, value: str | None) -> None:
         if value == "changethis":

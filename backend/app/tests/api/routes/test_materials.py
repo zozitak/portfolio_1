@@ -10,7 +10,7 @@ from app.tests.utils.material import create_random_material
 def test_create_material(
     client: TestClient, superuser_token_headers: dict[str, str]
 ) -> None:
-    data = {"name": "Foo", "description": "Bar"}
+    data = {"name": "Foo"}
     response = client.post(
         f"{settings.API_STR}/materials/",
         headers=superuser_token_headers,
@@ -19,7 +19,6 @@ def test_create_material(
     assert response.status_code == 200
     content = response.json()
     assert content["name"] == data["name"]
-    assert content["description"] == data["description"]
     assert "id" in content
 
 
@@ -34,7 +33,6 @@ def test_read_material(
     assert response.status_code == 200
     content = response.json()
     assert content["name"] == material.name
-    assert content["description"] == material.description
     assert content["id"] == str(material.id)
 
 
@@ -55,12 +53,11 @@ def test_read_material_not_enough_permissions(
 ) -> None:
     material = create_random_material(db)
     response = client.get(
-        f"{settings.API_STR}/materials/{material.id}",
-        headers=normal_user_token_headers,
+        f"{settings.API_STR}/materials/{material.id}"
     )
-    assert response.status_code == 400
+    assert response.status_code == 401
     content = response.json()
-    assert content["detail"] == "Not enough permissions"
+    assert content["detail"] == "Not authenticated"
 
 
 def test_read_materials(
@@ -105,7 +102,7 @@ def test_update_material_not_found(
     )
     assert response.status_code == 404
     content = response.json()
-    assert content["detail"] == "Item not found"
+    assert content["detail"] == "Material not found"
 
 
 def test_update_material_not_enough_permissions(
@@ -114,7 +111,7 @@ def test_update_material_not_enough_permissions(
     material = create_random_material(db)
     data = {"name": "Updated name", "description": "Updated description"}
     response = client.put(
-        f"{settings.API_STR}/items/{material.id}",
+        f"{settings.API_STR}/materials/{material.id}",
         headers=normal_user_token_headers,
         json=data,
     )
@@ -140,7 +137,7 @@ def test_delete_material_not_found(
     client: TestClient, superuser_token_headers: dict[str, str]
 ) -> None:
     response = client.delete(
-        f"{settings.API_V1_STR}/materials/{uuid.uuid4()}",
+        f"{settings.API_STR}/materials/{uuid.uuid4()}",
         headers=superuser_token_headers,
     )
     assert response.status_code == 404

@@ -9,4 +9,4 @@ def create_random_material(db: Session) -> Material:
     name = random_lower_string()
     description = random_lower_string()
     material_in = MaterialCreate(name=name, description=description)
-    return crud.create_material(session=db, material_in=material_in)
+    return crud.create_material(session=db, material_create=material_in)

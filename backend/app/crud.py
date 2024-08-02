@@ -1,4 +1,3 @@
-import uuid
 from typing import Any, List
 
 from sqlmodel import Session, select # type: ignore

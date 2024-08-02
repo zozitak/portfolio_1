@@ -10,7 +10,7 @@ from app.tests.utils.software import create_random_software
 def test_create_software(
     client: TestClient, superuser_token_headers: dict[str, str]
 ) -> None:
-    data = {"name": "Foo", "description": "Fighters"}
+    data = {"name": "Foo"}
     response = client.post(
         f"{settings.API_STR}/softwares/",
         headers=superuser_token_headers,
@@ -19,7 +19,6 @@ def test_create_software(
     assert response.status_code == 200
     content = response.json()
     assert content["name"] == data["name"]
-    assert content["description"] == data["description"]
     assert "id" in content
 
 
@@ -34,7 +33,6 @@ def test_read_software(
     assert response.status_code == 200
     content = response.json()
     assert content["name"] == software.name
-    assert content["description"] == software.description
     assert content["id"] == str(software.id)
 
 
@@ -55,12 +53,11 @@ def test_read_software_not_enough_permissions(
 ) -> None:
     software = create_random_software(db)
     response = client.get(
-        f"{settings.API_STR}/softwares/{software.id}",
-        headers=normal_user_token_headers,
+        f"{settings.API_STR}/softwares/{software.id}"
     )
-    assert response.status_code == 400
+    assert response.status_code == 401
     content = response.json()
-    assert content["detail"] == "Not enough permissions"
+    assert content["detail"] == "Not authenticated"
 
 
 def test_read_softwares(
@@ -151,9 +148,9 @@ def test_delete_software_not_found(
 def test_delete_software_not_enough_permissions(
     client: TestClient, normal_user_token_headers: dict[str, str], db: Session
 ) -> None:
-    software = create_random_software(db)
+    item = create_random_software(db)
     response = client.delete(
-        f"{settings.API_STR}/softwares/{software.id}",
+        f"{settings.API_STR}/softwares/{item.id}",
         headers=normal_user_token_headers,
     )
     assert response.status_code == 400

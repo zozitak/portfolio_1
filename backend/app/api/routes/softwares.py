@@ -12,29 +12,23 @@ router = APIRouter()
 
 @router.get("/", response_model=Simulation_SoftwaresPublic)
 def read_softwares(
-    session: SessionDep, current_user: CurrentUser, skip: int = 0, limit: int = 100
+    session: SessionDep, skip: int = 0, limit: int = 100
 ) -> Any:
     """
     Retrieve softwares.
     """
 
-    if current_user.is_superuser:
-        count_statement = select(func.count()).select_from(Simulation_Software)
-        count = session.exec(count_statement).one()
-        statement = select(Simulation_Software).offset(skip).limit(limit)
-        softwares = session.exec(statement).all()
-    else:
-        count_statement = (
-            select(func.count())
-            .select_from(Simulation_Software)
-        )
-        count = session.exec(count_statement).one()
-        statement = (
-            select(Simulation_Software)
-            .offset(skip)
-            .limit(limit)
-        )
-        softwares = session.exec(statement).all()
+    count_statement = (
+        select(func.count())
+        .select_from(Simulation_Software)
+    )
+    count = session.exec(count_statement).one()
+    statement = (
+        select(Simulation_Software)
+        .offset(skip)
+        .limit(limit)
+    )
+    softwares = session.exec(statement).all()
 
     software_list: list[Simulation_SoftwarePublic] = []
     for software in softwares:

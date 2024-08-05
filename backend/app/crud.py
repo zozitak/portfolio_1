@@ -44,7 +44,7 @@ def authenticate(*, session: Session, email: str, password: str) -> User | None:
     return db_user
 
 
-def create_material(*, session: Session, material_create: MaterialCreate) -> Material:
+def create_material(*, session: Session, material_create: Material) -> Material:
     db_obj = Material.model_validate(material_create)
     session.add(db_obj)
     session.commit()

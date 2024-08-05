@@ -2,6 +2,7 @@
 portfolio_1.code-workspace
 test.db
 pg_data
+dataset.json
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

@@ -12,29 +12,23 @@ router = APIRouter()
 
 @router.get("/", response_model=MaterialsPublic)
 def read_materials(
-    session: SessionDep, current_user: CurrentUser, skip: int = 0, limit: int = 100
+    session: SessionDep, skip: int = 0, limit: int = 100
 ) -> Any:
     """
-    Retrieve softwares.
+    Retrieve materials.
     """
 
-    if current_user.is_superuser:
-        count_statement = select(func.count()).select_from(Material)
-        count = session.exec(count_statement).one()
-        statement = select(Material).offset(skip).limit(limit)
-        materials = session.exec(statement).all()
-    else:
-        count_statement = (
-            select(func.count())
-            .select_from(Material)
-        )
-        count = session.exec(count_statement).one()
-        statement = (
-            select(Material)
-            .offset(skip)
-            .limit(limit)
-        )
-        materials = session.exec(statement).all()
+    count_statement = (
+        select(func.count())
+        .select_from(Material)
+    )
+    count = session.exec(count_statement).one()
+    statement = (
+        select(Material)
+        .offset(skip)
+        .limit(limit)
+    )
+    materials = session.exec(statement).all()
 
     material_list: list[MaterialPublic] = []
     for material in materials:

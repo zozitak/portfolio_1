@@ -105,6 +105,7 @@ class Material(MaterialBase, table=True):
 # Properties to return via API, id is always required
 class MaterialPublic(MaterialBase):
     id: uuid.UUID
+    description: str | None = Field(default=None, max_length=255)
 
 class MaterialsPublic(SQLModel):
     data: list[MaterialPublic]

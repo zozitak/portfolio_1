@@ -32,7 +32,7 @@ def read_materials(
 
     material_list: list[MaterialPublic] = []
     for material in materials:
-        material_list.append(MaterialPublic(name=material.name,id=material.id))
+        material_list.append(MaterialPublic(name=material.name,description=material.description,id=material.id))
 
     return MaterialsPublic(data=material_list, count=count)
 

@@ -14,8 +14,10 @@
 
 - SPA
 <img src="docs/img/spa.png">
+
 - Easy Login
 <img src="docs/img/ezlogin.png">
+
 - Show User Functionalities
 <img src="docs/img/userfuncs.png">
 

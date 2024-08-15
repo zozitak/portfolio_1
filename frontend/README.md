@@ -30,5 +30,6 @@
 
 <h3>API Integration</h3>
 
-- OpenAPI
 - CORS local dev: google-chrome --disable-web-security --allow-file-access-from-files --user-data-dir="~/test"  
+- OpenAPI
+<img src="docs/img/swagger-ui.png">

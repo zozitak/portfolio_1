@@ -1,0 +1,588 @@
+body{
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f4f4f4;
+}
+
+#app-layout{
+    display: flex;
+}
+
+#app-layout #left-col{
+
+    flex: 1;
+}
+
+#app-layout #right-col{
+
+    flex: 2;
+}
+
+h1 {
+    color: #5a5a5a;
+
+    font-size: 2rem; /* Increase font size for Herk's */
+  }
+h2 {
+    color: #5a5a5a;
+
+    font-size: 0.8rem; /* Adjust font size for the loading message */
+
+}
+
+/*-------------
+HEADER
+------------- */
+
+header {
+    background-color: rgb(29, 21, 49);
+    color: white;
+    height: 65px;
+    display: flex;
+}
+
+header .left {
+
+    flex: 1;
+}
+
+header .title {
+
+    flex: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2em;
+}
+
+header .right {
+
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+
+
+/*-------------
+GLOBAL STYLES
+------------- */
+
+button{
+    background-color: rgb(25, 85, 85);
+    border: none;
+    color: white;
+    font-size: 1em;
+    margin: 5px;
+    padding: 5px 8px;
+    border-radius: 5px;
+}
+
+button:hover{
+    background-color: #ffa000;
+    cursor: pointer;
+}
+
+
+/*-------------
+MODAL WINDOW
+------------- */
+
+#modal-overlay {
+    background-color: rgba(0, 0, 0, 0.7);
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    display: none; /* hides on opening the page */
+    align-items: center;
+    justify-content: center;
+}
+
+#modal-overlay #modal {
+    /* max-width: 650px; */
+    width: 100%;
+    background-color: white;
+    border-radius: 10px;
+
+}
+
+
+/*-------------
+ADD CONTACTS FORM
+------------- */
+
+#modal .modal-header h2 {
+    text-align: center;
+    margin: 0;
+    padding: 10px;
+    
+}
+
+#modal .modal-content{
+    display: flex;
+    
+}
+
+#modal .modal-content .input-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border: 1px solid #d6d6d6;
+    border-radius: 4px;
+    padding: 15px; /* Add some padding to the input card */
+    gap: 10px; /* Space between each input group */
+}
+
+#modal .modal-content .input-card .input-group {
+    
+    display: flex;
+    
+    margin: 5px 15px;
+}
+
+#modal .modal-content .input-card .input-group label {
+    margin-bottom: 5px; /* Space between label and input */
+}
+
+#modal .modal-content .input-card .input-group input {
+    width: 35%; /* Input field takes full width of its container */
+    font-size: 16px;
+    height: 28px;
+    padding-left: 5px;
+    padding-right: 1px;
+    color: #666;
+    border: 1px solid #d6d6d6;
+    border-radius: 4px;
+    
+}
+
+#modal .modal-footer{
+    display: flex;
+    justify-content: right;
+    margin: 5px 10px;
+}
+
+.close-btn{
+    background-color: #999;
+}
+
+/*--------------
+LEFT COLUMN
+-------------- */
+
+/* Style the search box */
+
+.searchBarWrapper {
+    width: 100%;
+    max-width: 31.25rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.searchBar {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#searchQueryInput {
+    width: 100%;
+    height: 2.8rem;
+    background: #ffffff;
+    outline: none;
+    border: none;
+    border-radius: 1.625rem;
+    padding: 0 3.5rem 0 1.5rem;
+    font-size: 1rem;
+}
+
+#searchQuerySubmit {
+    width: 3.5rem;
+    height: 2.8rem;
+    margin-left: -3.5rem;
+    background: none;
+    border: none;
+    outline: none;
+}
+
+#searchQuerySubmit:hover {
+    cursor: pointer;
+}
+
+/*-------------
+MATERIAL LIST
+------------- */
+
+#material-list {
+    padding: 0;
+    margin: 0;
+    /*border: 1px solid #999;*/
+    border-bottom: 0;
+}
+
+.material-list-item{
+    display: flex;
+    border-bottom: 1px solid #999;
+    padding: 1px;
+}
+
+.material-list-item .media{
+
+    flex:1;
+}
+
+.material-list-item .media .two-letters {
+/*     width: 60px;
+    height: 60px;
+    background: #333;
+    border-radius: 50%;
+    color: white; */
+
+    display: flex;
+    margin-top: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.material-list-item .content{
+
+    flex: 3;
+    display: flex;
+    
+    justify-content: left;
+    padding-left: 2em;
+}
+
+.material-list-item .content .title {
+    font-size: 1.2m;
+    font-weight: normal;
+    color: #333;
+    padding-right: 0.5em;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    justify-content: left;
+}
+
+.material-list-item .content .subtitle {
+    font-size: 1.2m;
+    font-weight: normal;
+    color: #333;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    justify-content: left;
+}
+
+.material-list-item .action{
+
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/*-------------
+HOVER EFFECTS
+------------- */
+
+/* General hover effect */
+.material-list-item:hover .title,
+.material-list-item:hover .subtitle {
+    font-weight: bold;
+}
+
+/* Specific hover colors for material-list-item */
+.material-list-item:hover .title,
+.material-list-item:hover .subtitle {
+    color: rgb(120, 0, 0) !important; /* Adjust color for Steel tab */
+}
+
+
+/*-------------
+RIGHT COLUMN
+------------- */
+
+#right-col-detail {
+    display: flex; /* Make it a flex container */
+    position: fixed;
+    padding-left: 4rem;
+    padding-top: 2rem;
+    gap: 0.5rem; /* Add gap between cards and chart containers */
+    filter: blur(2px);
+}
+
+/*---------------
+Login
+---------------*/
+
+.loginwrapper {
+    display: flex; /* Make it a flex container */
+    position: fixed;
+    padding-left: 16rem;
+    padding-top: 8rem;
+    margin: 2rem 0rem 4rem 4rem;
+    z-index: 1000;
+}
+
+.login {
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    padding: 10px 20px;
+    transition: transform 0.2s;
+    width: 500px;
+    text-align: center;
+}
+
+.login h1 {
+    color: #2933c4;
+}
+
+.login label {
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    text-align: left;
+    color: #555;
+    font-weight: bold;
+}
+
+
+.login input {
+    display: block;
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.login button {
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    background-color:#2933c4;
+    width: 100%;
+    font-size: 16px;
+}
+
+.login .wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/*---------------
+Logout
+---------------*/
+
+#logoutbuttonwrapper {
+    margin-right: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    display: none;
+}
+
+/*---------------
+CHARTS
+---------------*/
+
+.card-mat-container {
+    
+    
+    
+    gap: 0.5rem; /* Space between material cards */
+}
+
+.card-mat {
+    background-color: rgba(0, 0, 0, 0.8);
+    border: 1px solid #f4f4f4;
+    color: #f4f4f4;
+    padding-left: 5em;
+    padding: 5px;
+    border-radius: 5px;
+    max-width: 25rem;
+    
+}
+
+.card-mat .mat-header {
+    font-weight: bold; /* Make the header text bold */
+    text-align: center; /* Align the header text to the center */
+    border-bottom: 2px solid #ccc; /* Add a solid border bottom to create an underline effect */
+    padding-bottom: 5px; /* Add some bottom padding to separate the header from the rows */
+    font-size: 1rem;
+  }
+
+.card-mat .mat-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.1em;
+    
+}
+
+.card-mat .mat-property {
+    flex: 1;
+    font-size: 1rem;
+    min-width: 12rem;
+}
+
+.card-mat .mat-data {
+    flex: 1;
+    text-align: center;
+    font-size: 1rem;
+    min-width: 5rem;
+}
+
+.card-mat .mat-unit {
+    flex: 1;
+    text-align: right;
+    font-size: 1rem;
+    min-width: 4rem;
+}
+
+/* Style for rows with missing data */
+.missing-data {
+    color: grey;
+}
+
+
+
+/*-------------
+CHART
+------------- */
+
+.card-chart {
+    background-color: rgba(0, 0, 0, 0.8);
+    border: 1px solid #f4f4f4;
+    color: #f4f4f4;
+    padding-left: 5rem;
+    padding: 5px;
+    border-radius: 5px;
+    
+}
+
+.card-chart .mat-header {
+    font-weight: bold; /* Make the header text bold */
+    text-align: center; /* Align the header text to the center */
+    border-bottom: 2px solid #ccc; /* Add a solid border bottom to create an underline effect */
+    padding-bottom: 5px; /* Add some bottom padding to separate the header from the rows */
+    font-size: 1rem;
+}
+
+.card-chart-container {
+    flex-direction: column;
+    
+    display: flex; /* Make it a flex container */
+    gap: 0.5rem; /* Space between material cards */
+}
+
+.chart-canv {
+    height: 20.9rem /* Set your desired width */
+}
+
+
+/*-------------
+LINK
+------------- */
+
+.reference-link {
+    color: white; /* Default link color */
+    text-decoration: none; /* Remove underline */
+}
+
+.reference-link:hover {
+    text-decoration: underline; /* Underline on hover for better visibility */
+}
+
+
+/*-------------
+SMALL SCREEN ADJUSTMENT
+------------- */
+
+#app-layout #right-col #back-btn {
+    display: none;
+}
+
+@media only screen and (max-width:600px) {
+    #app-layout #right-col {
+        display: none;
+    }
+
+    #app-layout #right-col #back-btn {
+        margin: 20px 0 0 20px;
+        display: block;
+    }
+
+    #modal .modal-content .input-card {
+        flex-direction: column;
+    }
+}
+
+
+/*-------------
+TABS
+------------- */
+
+.tabs {
+    display: flex;
+    cursor: pointer;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.tab {
+    padding: 10px;
+    background-color: #f1f1f1;
+    border: 1px solid #ccc;
+    border-radius: 5px 5px 0 0;
+    flex-grow: 1;
+    text-align: center;
+}
+
+.tab.active {
+    background-color: #fff;
+    border-bottom: none;
+    font-weight: bold;
+}
+
+.tab-content {
+    /*border: 1px solid #ccc;*/
+    border-radius: 0 5px 5px 5px;
+    
+    background-color: #fff;
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.tab[data-target="steel"] {
+    color: rgb(120, 0, 0); /* Adjust color for Steel tab */
+  }
+  .tab[data-target="aluminium"] {
+    color: rgb(0, 128, 192); /* Adjust color for Aluminium tab */
+  }
+  .tab[data-target="iron"] {
+    color: rgb(0, 111, 55); /* Adjust color for Iron tab */
+  }
+  .tab[data-target="other"] {
+    color: rgb(255, 128, 64); /* Adjust color for Other tab */
+  }
+
+  

@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<!-- saved from url=(0031)https://contacts-e0803.web.app/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulation Materials</title>
+    <link rel="icon" type="image/ico" href="/frontend/assets/img/favicon.ico" />
+    <link rel="stylesheet" href="./style.css">
+    <script src="./chart.js"></script>
+    
+</head>
+
+<body>
+
+    <main id="app-layout">
+
+        <section id="left-col">
+            <header>
+                <div class="left"></div>
+                <div class="title">Materials</div>
+                <div class="right"><!--<button class="add-btn">Add</button>--></div>
+            </header>
+
+            <!-- Content areas for materials -->
+            <div class="tab-column">
+                
+                <div class="searchBarWrapper">
+                    <div class="searchBar">
+                        <input id="searchQueryInput" type="text" onkeyup="materialSearchFunction()" name="searchQueryInput" placeholder="Search" value="" />
+                        <!-- <button id="searchQuerySubmit" type="submit" name="searchQuerySubmit">
+                        <svg style="width:24px;height:24px" viewBox="0 0 24 24"><path fill="#666666" d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" />
+                        </svg> 
+                        </button> -->
+                    </div>
+                </div>
+
+                <ul class="material-list" id="main-material-list">
+                    <li class="material-list-item" id="TEST_MATERIAL_ID">
+                        <div class="media">
+                            <div class="two-letters">AB</div>
+                        </div>
+                            
+                        <div class="content">
+                            <div class="title">
+                                MATERIAL_NAME
+                            </div>
+                            <div class="subtitle">
+                                MATERIAL_VERSION
+                            </div>
+                        </div>
+
+                    </li> 
+                
+                <!-- EXAMPLE material list elements: 
+                <ul id="material-list">
+                    
+                    <li class="material-list-item">
+
+                        <div class="media">
+                            <div class="two-letters">AB</div>
+                        </div>
+                            
+                        <div class="content">
+                            <div class="title">Title</div>
+                            <div class="subtitle">Subtitle</div>
+                        </div>
+
+                        <div class="material-list-item-action">
+                            <button class="edit-user">edit</button>
+                            <button class="delete-user">delete</button>
+                            <button class="download-btn">download</button>
+                        </div> 
+                    </li> 
+                </ul> -->
+            </div>
+
+        </section>
+
+        <section id="right-col">
+            <header>
+                <div>
+                    <button id="back-btn">Back</button>
+                </div>
+                <div class="title">Details</div>
+                <div id="logoutbuttonwrapper" onclick="logingOut()">
+                    <?xml version="1.0" ?><svg fill="none" height="48" viewBox="0 0 24 24" width="48" xmlns="http://www.w3.org/2000/svg"><path d="M17 16L21 12M21 12L17 8M21 12L7 12M13 16V17C13 18.6569 11.6569 20 10 20H6C4.34315 20 3 18.6569 3 17V7C3 5.34315 4.34315 4 6 4H10C11.6569 4 13 5.34315 13 7V8" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"/></svg>
+                </div>
+            </header>
+
+            <div class="loginwrapper">
+                <div class="login">
+                <h1>SimMat Login</h1>
+                <h3>Enter your login credentials</h3>
+                <form action="">
+                      <label for="username">
+                            Username:
+                      </label>
+                      <input type="text" 
+                             id="username" 
+                             name="username" 
+                             autocomplete="username"
+                             placeholder="Enter your Username" required>
+    
+                      <label for="password">
+                            Password:
+                      </label>
+                      <input type="password"
+                             id="password" 
+                             name="password"
+                             autocomplete="on"
+                             placeholder="Enter your Password" required>
+    
+                      <div class="wrap">
+                            <button type="button"
+                                    onclick="userlogin()">
+                                  Login
+                            </button>
+                      </div>
+                </form>
+                <p>Not registered?
+                      <a href="#"
+                         style="text-decoration: none;">
+                            Create an account
+                      </a>
+                </p>
+                </div>
+            </div>
+
+            <div id="right-col-detail">
+                
+                <div class="card-mat-container">
+
+                    <div class="card-mat">
+                        <div class="mat-header">Johnson Cook Strength</div>
+                        <div class="mat-row ">
+                            <div class="mat-property">Initial Yield Strength:</div>
+                            <div class="mat-data"></div>
+                            <div class="mat-unit">[MPa]</div>
+                        </div>
+                        <div class="mat-row ">
+                            <div class="mat-property">Hardening Constant:</div>
+                            <div class="mat-data"></div>
+                            <div class="mat-unit">[MPa]</div>
+                        </div>
+                        <div class="mat-row ">
+                            <div class="mat-property">Hardening Exponent:</div>
+                            <div class="mat-data"></div>
+                            <div class="mat-unit">[-]</div>
+                        </div>
+                        <div class="mat-row ">
+                            <div class="mat-property">Strain Rate Constant:</div>
+                            <div class="mat-data"></div>
+                            <div class="mat-unit">[-]</div>
+                        </div>
+                        <div class="mat-row ">
+                            <div class="mat-property">Thermal Softening Exp:</div>
+                            <div class="mat-data"></div>
+                            <div class="mat-unit">[-]</div>
+                        </div>
+                        <div class="mat-row ">
+                            <div class="mat-property">Melting Temperature:</div>
+                            <div class="mat-data"></div>
+                            <div class="mat-unit">[K]</div>
+                        </div>
+                        <div class="mat-row ">
+                            <div class="mat-property">Reference Strain Rate:</div>
+                            <div class="mat-data"></div>
+                            <div class="mat-unit">[1/s]</div>
+                        </div>
+                    </div>
+
+                    <div class="card-mat">
+                        <div class="mat-header">Johnson Cook Failure</div>
+                        <div class="mat-row ">
+                            <div class="mat-property">Initial Failure Strain:</div>
+                            <div class="mat-data"></div>
+                            <div class="mat-unit">[-]</div>
+                        </div>
+                        <div class="mat-row ">
+                            <div class="mat-property">Exponential Factor:</div>
+                            <div class="mat-data"></div>
+                            <div class="mat-unit">[-]</div>
+                        </div>
+                        <div class="mat-row ">
+                            <div class="mat-property">Triaxial Factor:</div>
+                            <div class="mat-data"></div>
+                            <div class="mat-unit">[-]</div>
+                        </div>
+                        <div class="mat-row ">
+                            <div class="mat-property">Strain Rate Factor:</div>
+                            <div class="mat-data"></div>
+                            <div class="mat-unit">[-]</div>
+                        </div>
+                        <div class="mat-row ">
+                            <div class="mat-property">Temperature Factor:</div>
+                            <div class="mat-data"></div>
+                            <div class="mat-unit">[-]</div>
+                        </div>
+                        <div class="mat-row ">
+                            <div class="mat-property">Melting Temperature:</div>
+                            <div class="mat-data"></div>
+                            <div class="mat-unit">[K]</div>
+                        </div>
+                        <div class="mat-row ">
+                            <div class="mat-property">Reference Strain Rate:</div>
+                            <div class="mat-data"></div>
+                            <div class="mat-unit">[1/s]</div>
+                        </div>
+                    </div>
+
+                    <div class="card-mat">
+                        <div class="mat-header">Isotropic Elasticity</div>
+                        <div class="mat-row ">
+                            <div class="mat-property">Young's Modulus:</div>
+                            <div class="mat-data"></div>
+                            <div class="mat-unit">[GPa]</div>
+                        </div>
+                        <div class="mat-row ">
+                            <div class="mat-property">ν-Poisson Ratio:</div>
+                            <div class="mat-data"></div>
+                            <div class="mat-unit">[GPa]</div>
+                        </div>
+                        <div class="mat-row missing-data">
+                            <div class="mat-property">Shear Modulus:</div>
+                            <div class="mat-data">n/a</div>
+                            <div class="mat-unit">[-]</div>
+                        </div>
+                        <div class="mat-row missing-data">
+                            <div class="mat-property">Bulk Modulus:</div>
+                            <div class="mat-data">n/a</div>
+                            <div class="mat-unit">[GPa]</div>
+                        </div>
+                    </div>
+
+                    <div class="card-mat">
+                        <div class="mat-header">Shock EOS</div>
+                        <div class="mat-row ">
+                            <div class="mat-property">γ-Grueneisen Coefficient:</div>
+                            <div class="mat-data"></div>
+                            <div class="mat-unit">[-]</div>
+                        </div>
+                        <div class="mat-row ">
+                            <div class="mat-property">Parameter C1:</div>
+                            <div class="mat-data"></div>
+                            <div class="mat-unit">[m/s]</div>
+                        </div>
+                        <div class="mat-row ">
+                            <div class="mat-property">Parameter S1:</div>
+                            <div class="mat-data"></div>
+                            <div class="mat-unit">[-]</div>
+                        </div>
+                        <div class="mat-row missing-data">
+                            <div class="mat-property">Parameter Quadratic:</div>
+                            <div class="mat-data">n/a</div>
+                            <div class="mat-unit">[s/m]</div>
+                        </div>
+                    </div>
+
+                    <div class="card-mat">
+                        <div class="mat-header">Physical Properties</div>
+                        <div class="mat-row ">
+                            <div class="mat-property">Density:</div>
+                            <div class="mat-data"></div>
+                            <div class="mat-unit">[kg/m3]</div>
+                        </div>
+                        <div class="mat-row ">
+                            <div class="mat-property">Specific Heat Const. Pr.:</div>
+                            <div class="mat-data"></div>
+                            <div class="mat-unit">[J/kgK]</div>
+                        </div>
+                    </div>
+
+                    <div class="card-mat">
+                        <div class="mat-header">Other</div>
+                        <div class="mat-row missing-data">
+                            <div class="mat-property">Hardness:</div>
+                            <div class="mat-data">n/a</div>
+                            <div class="mat-unit">[BHN]</div>
+                        </div>
+                        <div class="mat-row ">
+                            <div class="mat-property">Source:</div>
+                            <div class="mat-data">Literature</div>
+                            <div class="mat-unit"></div>
+                        </div>
+                        <div class="mat-row ">
+                            <div class="mat-property">Created by</div>
+                            <div class="mat-data">SimMat</div>
+                            <div class="mat-unit"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-chart-container">    
+
+                    <div class="card-chart">
+                        <div class="mat-header">Chart of Johnson Cook Strength</div>
+                        <canvas class="chart-canv" id="chart-johnson-cook-strength" style="display: block; box-sizing: border-box; height: 334px; width: 668px;" width="668" height="334"></canvas>
+                    </div>
+
+                    <div class="card-chart">
+                        <div class="mat-header">Chart of Johnson Cook Failure</div>
+                        <canvas class="chart-canv" id="chart-johnson-cook-failure" style="display: block; box-sizing: border-box; height: 334px; width: 668px;" width="668" height="334"></canvas>
+                    </div>
+                </div>
+
+            </div>
+            
+
+
+        </section>
+
+    </main>
+
+    <script src="./app.js"></script>
+
+    <!-- MODAL-->
+
+    <!-- <div id="modal-overlay">
+        <div id="modal">
+
+            <div class="modal-header">
+                <h2>Add Explicit Material</h2>
+            </div>
+            <ul id="error-label"></ul>
+
+            <div class="modal-content">
+
+                <div class="input-card">
+                    <div class="input-group">
+                        <label>Material Name:</label>
+                        <input type="text" id="name">
+                    </div>
+                    <div class="input-group">
+                        <label>Material Version:</label>
+                        <input type="text" id="version">
+                    </div>
+                    <div class="input-group">
+                        <label>Source:</label>
+                        <input type="text" id="source">
+                    </div>
+                    <div class="input-group">
+                        <label>Reference:</label>
+                        <input type="text" id="reference">
+                    </div>
+                    <div class="input-group">
+                        <label>Category:</label>
+                        <input type="text" id="material">
+                    </div>
+                </div>
+
+                <div class="input-card">
+                    <div class="input-group">
+                        <label>Initial Yield Strength:</label>
+                        <input type="number" id="initial_yield_strength">
+                    </div>
+                    <div class="input-group">
+                        <label>Hardening Constant:</label>
+                        <input type="number" id="hardening_constan">
+                    </div>
+                    <div class="input-group">
+                        <label>Hardening Exponent:</label>
+                        <input type="number" id="hardening_exponent">
+                    </div>
+                    <div class="input-group">
+                        <label>Strain Rate Constant:</label>
+                        <input type="number" id="strain_rate_constant">
+                    </div>
+                    <div class="input-group">
+                        <label>Thermal Softening Exp:</label>
+                        <input type="number" id="thermal_softening_exp">
+                    </div>
+                    <div class="input-group">
+                        <label>Melting Temperature:</label>
+                        <input type="number" id="melting_temperature">
+                    </div>
+                    <div class="input-group">
+                        <label>Reference Strain Rate:</label>
+                        <input type="number" id="reference_strain_rate">
+                    </div>
+                </div>
+
+                <div class="input-card">
+                    <div class="input-group">
+                        <label>Initial Failure Strain:</label>
+                        <input type="number" id="initial_failure_strain">
+                    </div>
+                    <div class="input-group">
+                        <label>Exponential Factor:</label>
+                        <input type="number" id="exponential_factor">
+                    </div>
+                    <div class="input-group">
+                        <label>Triaxial Factor:</label>
+                        <input type="number" id="triaxial_factor">
+                    </div>
+                    <div class="input-group">
+                        <label>Strain Rate Factor:</label>
+                        <input type="number" id="strain_rate_factor">
+                    </div>
+                    <div class="input-group">
+                        <label>Temperature Factor:</label>
+                        <input type="number" id="temperature_factor">
+                    </div>
+                </div>
+
+                <div class="input-card">
+                    <div class="input-group">
+                        <label>Young's Modulus:</label>
+                        <input type="number" id="e_modulus">
+                    </div>
+                    <div class="input-group">
+                        <label>ν-Poisson Ratio:</label>
+                        <input type="number" id="poisson">
+                    </div>
+                    <div class="input-group">
+                        <label>Shear Modulus:</label>
+                        <input type="number" id="shear_modulus">
+                    </div>
+                    <div class="input-group">
+                        <label>Bulk Modulus:</label>
+                        <input type="number" id="bulk_modulus">
+                    </div>
+                </div>
+
+                <div class="input-card">
+                    <div class="input-group">
+                        <label>γ-Grueneisen Coefficient:</label>
+                        <input type="number" id="grueneisen_coefficient">
+                    </div>
+                    <div class="input-group">
+                        <label>Parameter C1:</label>
+                        <input type="number" id="parameter_c1">
+                    </div>
+                    <div class="input-group">
+                        <label>Parameter S1:</label>
+                        <input type="number" id="parameter_s1">
+                    </div>
+                    <div class="input-group">
+                        <label>Parameter Quadratic:</label>
+                        <input type="number" id="parameter_quadratic">
+                    </div>
+                </div>
+
+                <div class="input-card">
+                    <div class="input-group">
+                        <label>Density:</label>
+                        <input type="number" id="density">
+                    </div>
+                    <div class="input-group">
+                        <label>Specific Heat Const. Pr.:</label>
+                        <input type="number" id="specific_heat">
+                    </div>
+                    <div class="input-group">
+                        <label>Hardness:</label>
+                        <input type="number" id="hardness">
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button class="close-btn">Close</button>
+                <button class="save-btn">Save</button>
+            </div>
+        </div>   
+    </div> -->
+
+</body></html>

@@ -2,6 +2,8 @@
 
 This repository showcases my expertise in web development through a comprehensive demo project.
 
+<img src="frontend/docs/img/spaproject.png">
+
 <h2>The Project</h2>
 
 Simulation Materials API and Minimal Frontend Application</br>
